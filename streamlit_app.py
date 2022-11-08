@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 
 # 헤드라인
-st.write("## image.png보험료 예측하기")
+st.write("## 💰보험료 예측하기")
 st.image("https://www.accuquote.com/wp-content/uploads/2019/08/hands-in-hands-protecting-paper-family.jpg",caption='insurance')
 
 # 첫번째 행

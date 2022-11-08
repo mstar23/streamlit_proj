@@ -25,15 +25,15 @@ sex = r2_col2.selectbox("sex", sex_option)
 is_male = sex_option[0] == sex
 
 region_option = ('southwest', 'southeast', 'northwest', 'northeast')
-region = r2_col3.selectbox("region", region_option)
-is_southwest = region_option[0] == region
-is_southeast = region_option[1] == region
-is_northwest = region_option[2] == region
-
-# region = r2_col3.radio(region_option)
+# region = r2_col3.selectbox("region", region_option)
 # is_southwest = region_option[0] == region
 # is_southeast = region_option[1] == region
 # is_northwest = region_option[2] == region
+
+region = r2_col3.radio(region_option)
+is_southwest = region[0]
+is_southeast = region[1]
+is_northwest = region[2]
 # 예측 버튼
 predict_button = st.button("예측")
 genre = st.radio(

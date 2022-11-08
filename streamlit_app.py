@@ -36,6 +36,7 @@ predict_button = st.button("예측")
 st.write("---")
 
 # 예측 결과
+st.write("#🙌예측이 완료되었습니다.")
 if predict_button:
     model = joblib.load('first_model.pkl')
 

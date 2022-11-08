@@ -21,7 +21,7 @@ r2_col1.write("smoker")
 smoker = r2_col1.checkbox("")
 
 sex_option = ("male", "female")
-sex = r2_col2.selectbox("sex", sex_option)
+sex = r2_col2.multiselect("sex", sex_option)
 is_male = sex_option[0] == sex
 
 region_option = ('southwest', 'southeast', 'northwest', 'northeast')
@@ -36,7 +36,7 @@ predict_button = st.button("예측")
 st.write("---")
 
 # 예측 결과
-st.write("#🙌예측이 완료되었습니다.")
+st.write("### 🙌예측이 완료되었습니다.")
 if predict_button:
     model = joblib.load('first_model.pkl')
 

@@ -30,15 +30,19 @@ region_option = ('southwest', 'southeast', 'northwest', 'northeast')
 # is_southeast = region_option[1] == region
 # is_northwest = region_option[2] == region
 
-region = r2_col3.radio(region_option)
-is_southwest = region[0]
-is_southeast = region[1]
-is_northwest = region[2]
+region = r2_col3.radio("region", region_option)
+is_southwest = region_option[0] == region
+is_southeast = region_option[1] == region
+is_northwest = region_option[2] == region
+
 # 예측 버튼
 predict_button = st.button("예측")
-genre = st.radio(
-    "What's your favorite movie genre",
-    ('Comedy', 'Drama', 'Documentary'))
+########################################연습
+# r3_col1, r3_col2 = st.columns(2)
+# g = ('Comedy', 'Drama', 'Documentary')
+# genre = r3_col1.radio("What's your favorite movie genre", g)
+# genre[0]
+
 st.write("---")
 
 # 예측 결과

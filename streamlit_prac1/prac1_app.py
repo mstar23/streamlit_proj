@@ -1,23 +1,52 @@
 import streamlit as st
-# import joblib
-import pandas as pd # 판다스 불러오기
+import joblib
+import numpy as np
 
-from PIL import Image # 파이썬 기본라이브러리는 바로 사용 가능!
-import os
-def get_image(image_name):
-    image_path = f"{os.path.dirname(os.path.abspath(__file__))}/{image_name}"
-    image = Image.open(image_path) # 경로와 확장자 주의!
-    st.image(image)
+# 헤드라인
+st.write('# prac1 실습 페이지')
+st.write("## 💰보험료 예측하기")
+st.image("https://www.accuquote.com/wp-content/uploads/2019/08/hands-in-hands-protecting-paper-family.jpg",caption='insurance')
 
-#### 프로젝트 네임 #####
-st.write('# Prac1 실습 페이지')
-#### 데이터 불러오기 ####
-st.write('#### 전처리한 데이터')
-st.write('streamlit 완성시켜보기.')
-# lgbm_df = joblib.load('lgbm_df.pkl')
-# st.write(lgbm_df.head())
+# 첫번째 행
+r1_col1, r1_col2, r1_col3 = st.columns(3)
 
-### 불러온 데이터로 훈련-테스트셋 분리
+age = r1_col1.number_input("age", step=1, value=23)
 
-## joblib 설치 했는데 실행하는법 + 대용량 pkl 파일 guthub 업로드 방법???
-## 
+bmi = r1_col2.number_input("bmi", value=34.40)
+
+children = r1_col3.number_input("children", step=1, value=0)
+
+# 두번째 행
+r2_col1, r2_col2, r2_col3 = st.columns(3)
+
+r2_col1.write("smoker")
+smoker = r2_col1.checkbox("")
+
+sex_option = ("male", "female")
+sex = r2_col2.selectbox("sex", sex_option)
+is_male = sex_option[0] == sex
+
+region_option = ('southwest', 'southeast', 'northwest', 'northeast')
+# region = r2_col3.selectbox("region", region_option)
+# is_southwest = region_option[0] == region
+# is_southeast = region_option[1] == region
+# is_northwest = region_option[2] == region
+
+region = r2_col3.radio("region", region_option)
+is_southwest = region_option[0] == region
+is_southeast = region_option[1] == region
+is_northwest = region_option[2] == region
+
+# 예측 버튼
+predict_button = st.button("예측")
+st.write("---")
+
+# 예측 결과
+st.write("### 🙌예측이 완료되었습니다.")
+if predict_button:
+    model = joblib.load('first_model.pkl')
+
+    pred = model.predict(np.array([[age, bmi, children, smoker * 1,
+        is_male * 1, is_northwest * 1, is_southeast * 1, is_southwest * 1]]))
+
+    st.metric("예측 보험료", pred[0])

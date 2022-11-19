@@ -13,7 +13,7 @@ def get_image(image_name):
 st.write('# Prac1 실습 페이지')
 #### 데이터 불러오기 ####
 st.write('#### 전처리한 데이터')
-st.write('왜 streamlit에 반영이 안돼? github에는 되는데?')
+st.write('streamlit 완성시켜보기.')
 # lgbm_df = joblib.load('lgbm_df.pkl')
 # st.write(lgbm_df.head())
 

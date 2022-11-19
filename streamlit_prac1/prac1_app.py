@@ -11,6 +11,6 @@ st.write('여기에 lgbm_df 업로드 되어 있기 때문에 여기서 lgbm 실
 st.write('#### 전처리한 데이터')
 st.write('큰일 날뻔 ㅎ')
 # pkl_path = f"{os.path.dirname(os.path.abspath(__file__))}/lgbm_df.pkl"
-lgbm_df = joblib.load('lgbm_df.pkl')
+lgbm_df = joblib.load('streamlit_prac1\lgbm_df.pkl')
 lgbm_df = pd.DataFrame(lgbm_df)
 st.write(lgbm_df.head())

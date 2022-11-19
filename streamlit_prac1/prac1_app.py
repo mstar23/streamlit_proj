@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
+import os
 
 # 헤드라인
 st.write('여기에 lgbm_df 업로드 되어 있기 때문에 여기서 lgbm 실습')
